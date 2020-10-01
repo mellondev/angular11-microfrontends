@@ -1,0 +1,18 @@
+{
+	"name": "Angular 11 Microfrontends",
+	"dockerFile": "Dockerfile",
+	"forwardPorts": [4200],
+	"runArgs": [
+		"--network", "host",
+	],
+	"extensions": [
+		"dbaeumer.vscode-eslint",
+		"ms-vscode.vscode-typescript-tslint-plugin",
+		"angular.ng-template",
+		"johnpapa.angular2",
+		"esbenp.prettier-vscode",
+		"hookyqr.beautify",
+	],
+
+	"remoteUser": "node"
+}

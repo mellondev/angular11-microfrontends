@@ -1,0 +1,131 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "cli": {
+    "packageManager": "yarn"
+  },
+  "newProjectRoot": "projects",
+  "projects": {
+    "mdmf-shell": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/mdmf-shell",
+      "sourceRoot": "projects/mdmf-shell/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/mdmf-shell",
+            "index": "projects/mdmf-shell/src/index.html",
+            "main": "projects/mdmf-shell/src/main.ts",
+            "polyfills": "projects/mdmf-shell/src/polyfills.ts",
+            "tsConfig": "projects/mdmf-shell/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/mdmf-shell/src/favicon.ico",
+              "projects/mdmf-shell/src/assets"
+            ],
+            "styles": [
+              "projects/mdmf-shell/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/mdmf-shell/src/environments/environment.ts",
+                  "with": "projects/mdmf-shell/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "options": {
+            "browserTarget": "mdmf-shell:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "mdmf-shell:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "mdmf-shell:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/mdmf-shell/src/test.ts",
+            "polyfills": "projects/mdmf-shell/src/polyfills.ts",
+            "tsConfig": "projects/mdmf-shell/tsconfig.spec.json",
+            "karmaConfig": "projects/mdmf-shell/karma.conf.js",
+            "assets": [
+              "projects/mdmf-shell/src/favicon.ico",
+              "projects/mdmf-shell/src/assets"
+            ],
+            "styles": [
+              "projects/mdmf-shell/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/mdmf-shell/tsconfig.app.json",
+              "projects/mdmf-shell/tsconfig.spec.json",
+              "projects/mdmf-shell/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/mdmf-shell/e2e/protractor.conf.js",
+            "devServerTarget": "mdmf-shell:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "mdmf-shell:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "mdmf-shell"
+}
