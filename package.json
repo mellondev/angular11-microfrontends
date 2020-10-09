@@ -3,15 +3,19 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "startShell": "ng serve --extra-webpack-config webpack.partial.js -o",
+    "startProfile": "ng serve --port 4201 --project mdmf-profile --extra-webpack-config projects/mdmf-profile/webpack.partial.js -o",
+    "buildShell": "ng build --extra-webpack-config webpack.partial.js",
+    "buildProfile": "ng build --project mdmf-profile --deploy-url http://localhost:4201/ --extra-webpack-config projects/mdmf-profile/webpack.partial.js",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "serveShell": "lite-server -c lite-server.config.json",
+    "serveProfile": "lite-server -c profile-lite-server.config.json"
   },
   "private": true,
   "resolutions": {
-    "webpack": "^5.0.0-rc.0"
+    "webpack": "^5.0.0-rc.4"
   },
   "dependencies": {
     "@angular/animations": "~11.0.0-next.4",
@@ -22,9 +26,9 @@
     "@angular/platform-browser": "~11.0.0-next.4",
     "@angular/platform-browser-dynamic": "~11.0.0-next.4",
     "@angular/router": "~11.0.0-next.4",
+    "lite-server": "^2.5.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
-    "webpack": "5.0.0-rc.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

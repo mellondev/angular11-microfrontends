@@ -12,6 +12,17 @@ module.exports = {
       filename: "remoteEntry.js",
       exposes: {
         Module: "./projects/mdmf-shell/src/app/app.module.ts",
+      },
+      shared: {
+        "@angular/core": {
+          singleton: true,
+        },
+        "@angular/common": {
+          singleton: true,
+        },
+        "@angular/router": {
+          singleton: true,
+        }
       }
     }),
   ],
