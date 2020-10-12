@@ -2,6 +2,13 @@ const webpack = require("webpack");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
 module.exports = {
+  output: {
+    publicPath: "http://localhost:4201/",
+    uniqueName: "mdmfprofile"
+  },
+  optimization: {
+    runtimeChunk: false
+  },
   plugins: [
     new ModuleFederationPlugin({
       name: "profile",
@@ -10,14 +17,7 @@ module.exports = {
       exposes: {
         Module: "./projects/mdmf-profile/src/app/app.module.ts",
       },
-      shared: {
-        "@angular/core": { singleton: true, eager: true },
-        "@angular/common": { singleton: true, eager: true },
-        "@angular/router": { singleton: true, eager: true },
-      }
+      shared: ["@angular/core", "@angular/common", "@angular/router"],
     }),
-  ],
-  output: {
-    publicPath: 'http://localhost:4201/'
-  },
+  ]
 };

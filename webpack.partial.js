@@ -2,10 +2,14 @@ const webpack = require("webpack");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
 module.exports = {
+  output: {
+    publicPath: "http://localhost:4200/",
+    uniqueName: "shell",
+  },
+  optimization: {
+    runtimeChunk: false,
+  },
   plugins: [
-    new webpack.DefinePlugin({
-      VERSION: JSON.stringify("4711"),
-    }),
     new ModuleFederationPlugin({
       name: "shell",
       library: { type: "var", name: "shell" },
@@ -14,16 +18,10 @@ module.exports = {
         Module: "./projects/mdmf-shell/src/app/app.module.ts",
       },
       shared: {
-        "@angular/core": {
-          singleton: true,
-        },
-        "@angular/common": {
-          singleton: true,
-        },
-        "@angular/router": {
-          singleton: true,
-        }
-      }
+        "@angular/core": { eager: true },
+        "@angular/common": { eager: true },
+        "@angular/router": { eager: true },
+      },
     }),
   ],
 };

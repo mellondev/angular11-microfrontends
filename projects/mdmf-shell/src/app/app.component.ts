@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-declare const VERSION: string;
 
 @Component({
   selector: 'app-root',
@@ -7,5 +6,5 @@ declare const VERSION: string;
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = VERSION;
+  
 }

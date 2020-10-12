@@ -33,7 +33,8 @@
             "styles": [
               "projects/mdmf-shell/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "webpack.partial.js"
           },
           "configurations": {
             "production": {
@@ -61,18 +62,22 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "extraWebpackConfig": "webpack.partial.js"
             }
           }
         },
         "serve": {
           "builder": "ngx-build-plus:dev-server",
           "options": {
-            "browserTarget": "mdmf-shell:build"
+            "browserTarget": "mdmf-shell:build",
+            "extraWebpackConfig": "webpack.partial.js",
+            "port": "4200"
           },
           "configurations": {
             "production": {
-              "browserTarget": "mdmf-shell:build:production"
+              "browserTarget": "mdmf-shell:build:production",
+              "extraWebpackConfig": "webpack.partial.js"
             }
           }
         },
@@ -153,7 +158,8 @@
             "styles": [
               "projects/mdmf-profile/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "projects/mdmf-profile/webpack.partial.js"
           },
           "configurations": {
             "production": {
@@ -181,18 +187,22 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "extraWebpackConfig": "projects/mdmf-profile/webpack.partial.js"
             }
           }
         },
         "serve": {
           "builder": "ngx-build-plus:dev-server",
           "options": {
-            "browserTarget": "mdmf-profile:build"
+            "browserTarget": "mdmf-profile:build",
+            "extraWebpackConfig": "projects/mdmf-profile/webpack.partial.js",
+            "port": "4201"
           },
           "configurations": {
             "production": {
-              "browserTarget": "mdmf-profile:build:production"
+              "browserTarget": "mdmf-profile:build:production",
+              "extraWebpackConfig": "projects/mdmf-profile/webpack.partial.js"
             }
           }
         },
