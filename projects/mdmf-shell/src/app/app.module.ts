@@ -1,20 +1,27 @@
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { APP_ROUTES } from './app.routes';
 import { HomeComponent } from './home/home.component';
+import { MicrofrontendService } from './microfrontends/microfrontend.service';
+
+export function initializeApp(mfService: MicrofrontendService): () => Promise<void> {
+  return () => mfService.initialise();
+}
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent
+  declarations: [AppComponent, HomeComponent],
+  imports: [BrowserModule, RouterModule.forRoot(APP_ROUTES)],
+  providers: [
+    MicrofrontendService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      multi: true,
+      deps: [MicrofrontendService],
+    },
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

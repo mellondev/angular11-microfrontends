@@ -17,7 +17,11 @@ module.exports = {
       exposes: {
         ProfileModule: "./projects/mdmf-profile/src/app/profile/profile.module.ts",
       },
-      shared: ["@angular/core", "@angular/common", "@angular/router"],
+      shared: {
+        "@angular/core": { eager: true },
+        "@angular/common": { eager: true },
+        "@angular/router": { eager: true },
+      },
     }),
   ]
 };

@@ -1,3 +1,10 @@
-<h1>Welcome to App Shell</h1>
-<a routerLink="profile">Profile</a>
+<nav>
+  <ul class="nav-list">
+    <li class="nav-item"><a routerLink="home"><img width="148px" height="29px" src="../assets/md-shell-logo.png" /></a>
+    </li>
+    <li class="nav-item"><a routerLink="home">Home</a></li>
+    <li class="nav-item" *ngFor="let microfrontend of mfService.microfrontends"><a
+        [routerLink]="microfrontend.routePath">{{ microfrontend.displayName }}</a></li>
+  </ul>
+</nav>
 <router-outlet></router-outlet>
