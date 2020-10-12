@@ -1,20 +1,47 @@
-# NgMicrofrontends
+# Microfrontends Angular 11
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.0-next.4.
+This project shows an example of using Webpack 5 Module Federation with Angular v11-next.5
 
-## Development server
+## Usage
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+To enable use of Webpack 5 with the angular cli you **must** use **yarn** as your package manager, it allows you to override the webpack dependencies for the CLI. 
+The package.json contains the following section to override webpack to use version 5 instead of 4:
 
-## Code scaffolding
+```json
+  "resolutions": {
+    "webpack": "5.0.0"
+  },
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Running the demo
+- Install packages: ``yarn install``
+- Start the mdmf-shell: ``ng serve mdmf-shell``
+- Start the Microfrontend: ``ng serve mdmf-profile``
+- Open the shell http://localhost:4200
+- Click the profile navigation link to load the remote Microfrontend
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Project Structure
 
-## Running unit tests
+### Shell
+The shell project located in: `projects/mdmf-shell` folder, its contains the shell application which is used to load remote Microfrontends using dynamic routing constructed from the Microfrontend array.  The list of Microfrontends can be loaded from a config if required, but for the example it is just an hardcoded array.  
+
+### Profile Microfrontend
+The profile project located in: `projects/mdmf-profile` contains a profile module with some child routes configured. The profile module is exposed as a remote module within the Module Federation config:
+
+```js
+plugins: [
+    new ModuleFederationPlugin({
+      name: "profile",
+      library: { type: "var", name: "profile" },
+      filename: "remoteEntry.js",
+      exposes: {
+        ProfileModule: "./projects/mdmf-profile/src/app/profile/profile.module.ts",
+      },
+      shared: ["@angular/core", "@angular/common", "@angular/router"],
+    }),
+  ]
+```
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 

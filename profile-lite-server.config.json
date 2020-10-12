@@ -1,5 +1,0 @@
-{
-  "port": 4201,
-  "files": ["./dist/mdmf-profile/**/*.{html,htm,css,js}"],
-  "server": { "baseDir": "./dist/mdmf-profile" }
-}
