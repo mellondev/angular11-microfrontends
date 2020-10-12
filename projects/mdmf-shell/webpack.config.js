@@ -11,7 +11,11 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      shared: ["@angular/core", "@angular/common", "@angular/router"],
+      shared: {
+        "@angular/core": { eager: true },
+        "@angular/common": { eager: true },
+        "@angular/router": { eager: true },
+      },
     }),
   ],
 };
