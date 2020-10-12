@@ -15,7 +15,7 @@ module.exports = {
       library: { type: "var", name: "profile" },
       filename: "remoteEntry.js",
       exposes: {
-        Module: "./projects/mdmf-profile/src/app/app.module.ts",
+        ProfileModule: "./projects/mdmf-profile/src/app/profile/profile.module.ts",
       },
       shared: ["@angular/core", "@angular/common", "@angular/router"],
     }),

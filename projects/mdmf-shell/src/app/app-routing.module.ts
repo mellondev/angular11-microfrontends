@@ -12,8 +12,8 @@ const routes: Routes = [
       loadRemoteModule({
         remoteName: 'profile',
         remoteEntry: 'http://localhost:4201/remoteEntry.js',
-        exposedModule: 'Module',
-      }).then((m) => m.AppModule),
+        exposedModule: 'ProfileModule',
+      }).then((m) => m.ProfileModule),
   },
 ];
 
