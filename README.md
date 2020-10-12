@@ -1,6 +1,17 @@
 # Microfrontends Angular 11
 
-This project shows an example of using Webpack 5 Module Federation with Angular v11-next.5
+This project shows an example of using Webpack 5 Module Federation with Angular v11-next.5, note the use of **yarn**, this is required to override the webpack version for the angular cli
+
+
+## Running the demo
+- Install packages: ``yarn install``
+- Start the mdmf-shell: ``ng serve mdmf-shell``
+- Start the Microfrontend: ``ng serve mdmf-profile``
+- Open the shell http://localhost:4200
+- Click the profile navigation link to load the remote Microfrontend
+
+![Shell and Microfronted Screenshot](microfrontend-shell-profile.jpg)
+
 
 ## Usage
 
@@ -12,14 +23,6 @@ The package.json contains the following section to override webpack to use versi
     "webpack": "5.0.0"
   },
 ```
-
-## Running the demo
-- Install packages: ``yarn install``
-- Start the mdmf-shell: ``ng serve mdmf-shell``
-- Start the Microfrontend: ``ng serve mdmf-profile``
-- Open the shell http://localhost:4200
-- Click the profile navigation link to load the remote Microfrontend
-
 
 ## Project Structure
 
@@ -42,4 +45,3 @@ plugins: [
     }),
   ]
 ```
-
